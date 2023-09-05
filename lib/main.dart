@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oloha/screens/on_boarding_screens.dart';
 import 'package:oloha/screens/splash_screen.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const MyWidget(),
     );
   }
 }
