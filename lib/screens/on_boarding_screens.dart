@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:oloha/screens/home_page.dart';
 import 'package:onboarding/onboarding.dart';
 
 class OnboardingScreens extends StatefulWidget {
@@ -108,7 +109,9 @@ class _OnboardingScreensState extends State<OnboardingScreens> {
                           ),
                           SizedBox(height: deviceHeight * 0.04,),
                           MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                            },
                             color: Colors.black,
                             textColor: Colors.white,
                             minWidth: deviceWidth * 0.6,
