@@ -2,14 +2,14 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({Key? key}) : super(key: key);
+class OnboardingScreens extends StatefulWidget {
+  const OnboardingScreens({Key? key}) : super(key: key);
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<OnboardingScreens> createState() => _OnboardingScreensState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _OnboardingScreensState extends State<OnboardingScreens> {
   late int index;
 
   final List<String> titles = [
@@ -59,90 +59,92 @@ class _MyWidgetState extends State<MyWidget> {
       ),
     ];
 
-    return Scaffold(
-      body: Onboarding(
-          pages: onboardingPagesList,
-          onPageChange: (int pageIndex) {
-            index = pageIndex;
-          },
-          footerBuilder: (context, dragDistance, pagesLength, setIndex) {
-            return Column(
-              children: [
-                Container(
-                  height: deviceHeight * 0.35,
-                  width: deviceWidth * 0.95,
-                  decoration: const BoxDecoration(
-                    color: Color(0xFFF1F1F5),
-                    borderRadius: BorderRadius.all(Radius.circular(24.0)),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(deviceWidth * 0.05),
-                    child: Column(
-                      children: [
-                        Text(
-                          titles[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: deviceHeight * 0.02,),
-                        Text(
-                          descriptions[index],
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                        SizedBox(height: deviceHeight * 0.04),
-                        DotsIndicator(
-                          dotsCount: pagesLength,
-                          position: index,
-                          decorator: const DotsDecorator(
-                            color: Color(0xFFe2e2ea),
-                            activeColor: Color(0xFFfebd2f),
-                          ),
-                        ),
-                        SizedBox(height: deviceHeight * 0.04,),
-                        MaterialButton(
-                          onPressed: () {},
-                          color: Colors.black,
-                          textColor: Colors.white,
-                          minWidth: deviceWidth * 0.6,
-                          height: deviceHeight * 0.06,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
-                          child: const Text(
-                            'Get Started',
-                            style: TextStyle(
-                              fontSize: 16,
+    return SafeArea(
+      child: Scaffold(
+        body: Onboarding(
+            pages: onboardingPagesList,
+            onPageChange: (int pageIndex) {
+              index = pageIndex;
+            },
+            footerBuilder: (context, dragDistance, pagesLength, setIndex) {
+              return Column(
+                children: [
+                  Container(
+                    height: deviceHeight * 0.35,
+                    width: deviceWidth * 0.95,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFF1F1F5),
+                      borderRadius: BorderRadius.all(Radius.circular(24.0)),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(deviceWidth * 0.05),
+                      child: Column(
+                        children: [
+                          Text(
+                            titles[index],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 24,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                        SizedBox(height: deviceHeight * 0.02,),
-                        const InkWell(
-                          child: Text(
-                            'Skip for now',
-                            style: TextStyle(
+                          SizedBox(height: deviceHeight * 0.02,),
+                          Text(
+                            descriptions[index],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.normal,
-                              color: Colors.grey,
                             ),
                           ),
-                        )
+                          SizedBox(height: deviceHeight * 0.04),
+                          DotsIndicator(
+                            dotsCount: pagesLength,
+                            position: index,
+                            decorator: const DotsDecorator(
+                              color: Color(0xFFe2e2ea),
+                              activeColor: Color(0xFFfebd2f),
+                            ),
+                          ),
+                          SizedBox(height: deviceHeight * 0.04,),
+                          MaterialButton(
+                            onPressed: () {},
+                            color: Colors.black,
+                            textColor: Colors.white,
+                            minWidth: deviceWidth * 0.6,
+                            height: deviceHeight * 0.06,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: const Text(
+                              'Get Started',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: deviceHeight * 0.02,),
+                          const InkWell(
+                            child: Text(
+                              'Skip for now',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          )
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: deviceHeight * 0.02,)
-              ],
-            );
-          }),
+                  SizedBox(height: deviceHeight * 0.02,)
+                ],
+              );
+            }),
+      ),
     );
   }
 }

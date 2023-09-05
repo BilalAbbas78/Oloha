@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Use a Future.delayed to navigate to onboarding after 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const MyWidget(),
+        builder: (context) => const OnboardingScreens(),
       ));
     });
   }
